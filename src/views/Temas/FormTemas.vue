@@ -6,7 +6,7 @@ import api from '../../services/api.js';
     <div class="container">
         <Nav></Nav>
         <section class="container-title">
-            <h1>TEMAS</h1>
+            <h1>Cadastro de Tema</h1>
             <svg-icon type="mdi" style="color: #CF3A69" :size="32" class="icone" :path="iconGroup"></svg-icon>
         </section>
         <div class="container-form">
@@ -26,7 +26,7 @@ import api from '../../services/api.js';
 
             <div class="actions">
                 <v-btn class="secundary" v-bind="props" @click="this.$router.push('/temas');">
-                    Cancelar
+                    Cancelar / Voltar
                 </v-btn>
 
                 <v-btn class="bnt" v-if="!editable" v-bind="props" @click="postTema()">
@@ -150,6 +150,7 @@ export default {
 
 .icone {
     align-self: center;
+    margin-left: 5px;
 }
 
 h1 {

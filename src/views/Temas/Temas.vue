@@ -6,11 +6,11 @@ import api from '../../services/api.js';
     <div class="container">
         <Nav></Nav>
         <section class="container-title">
-            <h1>TEMAS</h1>
+            <h1>Lista de Temas</h1>
             <svg-icon type="mdi" style="color: #8F4254" :size="30" class="icone" :path="iconParty"></svg-icon>
         </section>
         <v-btn class="bnt" v-bind="props" @click="this.$router.push('/form-temas');">
-            Novo
+            Novo Tema
         </v-btn>
         <section class="container-page">
             <v-table>
@@ -37,22 +37,22 @@ import api from '../../services/api.js';
 
                             <v-dialog v-model="dialog" persistent width="auto">
                                 <template v-slot:activator="{ props }">
-                                    <svg-icon type="mdi" style="color: #174e66" :size="22" class="iconTable" v-bind="props"
+                                    <svg-icon type="mdi" style="color: #174e66" :size="22" @click="this.idForDelete=item.id" class="iconTable" v-bind="props"
                                         :path="iconDelete"></svg-icon>
                                 </template>
                                 <v-card>
                                     <v-card-title class="text-h5">
-                                        Excluir este item?
+                                        Excluir este Tema?
                                     </v-card-title>
                                     <v-card-text>
-                                        Você deseja realmente apagar este item ? Esta ação é irreversível.
+                                        Você deseja realmente apagar este tema? Esta ação é irreversível.
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="red" variant="text" @click="dialog = false">
                                             Cancelar
                                         </v-btn>
-                                        <v-btn color="green-darken-1" variant="text" @click="deleteTema(item.id)">
+                                        <v-btn color="green-darken-1" variant="text" @click="deleteTema(idForDelete)">
                                             Confirmar
                                         </v-btn>
                                     </v-card-actions>
@@ -81,6 +81,7 @@ export default {
             iconDetail: mdiEyeOutline,
             temas: [],
             dialog: false,
+            idForDelete: null,
 
         }
     },
@@ -133,6 +134,7 @@ export default {
 
 .icone {
     align-self: center;
+    margin-left: 5px;
 }
 
 h1 {

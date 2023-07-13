@@ -6,11 +6,11 @@ import api from '../../services/api.js';
     <div class="container">
         <Nav></Nav>
         <section class="container-title">
-            <h1>ITENS</h1>
+            <h1>Lista de Itens</h1>
             <svg-icon type="mdi" style="color: #CF3A69" :size="32" class="icone" :path="iconGroup"></svg-icon>
         </section>
         <v-btn class="bnt" v-bind="props" @click="this.$router.push('/form-itens');">
-            Novo
+            Novo Item
         </v-btn>
         <section class="container-page">
             <v-table>
@@ -36,27 +36,27 @@ import api from '../../services/api.js';
                         <td>{{ item.name }}</td>
                         <td>{{ item.description }}</td>
                         <td class="actions">
-                            <svg-icon type="mdi" style="color: #174e66" :size="22" class="iconTable" :path="iconEdit" @click="this.goToEdit(item.id);" ></svg-icon>
+                            <svg-icon type="mdi" style="color: #174e66" :size="22"  class="iconTable" :path="iconEdit" @click="this.goToEdit(item.id);" ></svg-icon>
 
 
                             <v-dialog v-model="dialog" persistent width="auto">
                                 <template v-slot:activator="{ props }">
-                                    <svg-icon type="mdi" style="color: #174e66" :size="22" class="iconTable" v-bind="props"
+                                    <svg-icon type="mdi" style="color: #174e66" :size="22" @click="this.idForDelete=item.id" class="iconTable" v-bind="props"
                                         :path="iconDelete"></svg-icon>
                                 </template>
                                 <v-card>
                                     <v-card-title class="text-h5">
-                                        Excluir este item?
+                                        Excluir este Item?
                                     </v-card-title>
                                     <v-card-text>
-                                        Você deseja realmente apagar este item ? Esta ação é irreversível.
+                                        Você deseja realmente apagar este item? Esta ação é irreversível.
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
-                                        <v-btn color="red" variant="text" @click="this.$router.push('/form-itens');">
+                                        <v-btn color="red" variant="text" @click="dialog = false">
                                             Cancelar
                                         </v-btn>
-                                        <v-btn color="green-darken-1" variant="text" @click="deleteItem(item.id)">
+                                        <v-btn color="green-darken-1" variant="text" @click="deleteItem(idForDelete)">
                                             Confirmar
                                         </v-btn>
                                     </v-card-actions>
@@ -85,6 +85,7 @@ export default {
             iconDetail: mdiEyeOutline,
             itens: [],
             dialog: false,
+            idForDelete: null,
 
         }
     },
@@ -137,6 +138,7 @@ export default {
 
 .icone {
     align-self: center;
+    margin-left: 5px;
 }
 
 h1 {

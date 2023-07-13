@@ -6,8 +6,8 @@ import api from '../../services/api.js';
     <div class="container">
         <Nav></Nav>
         <section class="container-title">
-            <h1>CLIENTES</h1>
-            <svg-icon type="mdi" style="color: #040005" :size="30" class="icone" :path="iconGroup"></svg-icon>
+            <h1>Cadastro de Cliente</h1>
+            <svg-icon type="mdi" style="color: #501589" :size="30" class="icone" :path="iconGroup"></svg-icon>
         </section>
         <div class="container-form">
             <label for="nome">Nome</label>
@@ -18,7 +18,7 @@ import api from '../../services/api.js';
                 name="email" id="email" required>
             <div class="actions">
                 <v-btn class="secundary" v-bind="props" @click="this.$router.push('/clientes');">
-                    Cancelar
+                    Cancelar / Voltar
                 </v-btn>
 
                 <v-btn class="bnt" v-if="!editable" v-bind="props" @click="postCliente()">
@@ -56,7 +56,7 @@ export default {
     },
     created() {
         if (this.$route.params.id != null || undefined) {
-            console.log('to no if');
+            console.log('to no if', this.$route.params.id);
             this.getCliente(this.$route.params.id);
             this.editable = true;
         }
@@ -70,7 +70,7 @@ export default {
         },
         postCliente() {
             api
-                .post("/clientes/", this.cliente)
+                .post("/clients/", this.cliente)
                 .then(() => {
                     this.exibirToast();
                     console.log('cliente cadastrado com sucesso.')
@@ -81,7 +81,7 @@ export default {
         },
         getCliente(id) {
             api
-                .get("/clientes/" + id + "/")
+                .get("/clients/" + id + "/")
                 .then((resp) => {
                     console.log(resp.data);
                     this.cliente.name = resp.data.name;
@@ -93,7 +93,7 @@ export default {
         },
         updateCliente() {
             api
-                .put(`/clientes/${this.$route.params.id}/`, this.cliente)
+                .put(`/clients/${this.$route.params.id}/`, this.cliente)
                 .then(() => {
                     toast("Cliente atualizado com sucesso!", {
                         autoClose: 1000,
@@ -117,13 +117,14 @@ export default {
 
 .container-title {
     display: flex;
-    color: #040005;
+    color: #501589;
     font-weight: bold !important;
     margin-left: 4em;
 }
 
 .icone {
     align-self: center;
+    margin-left: 5px;
 }
 
 h1 {
