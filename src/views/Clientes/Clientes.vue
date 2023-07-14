@@ -104,6 +104,7 @@ export default {
                 .delete(`/clients/${id}/`)
                 .then(() => {
                     console.log('Item excluido');
+                    this.getClientes();
                     this.dialog = false;
                 })
                 .catch((error) => {
@@ -113,7 +114,7 @@ export default {
         goToEdit(id){
             this.$router.push({ name: 'edit-clientes', params: { id: id }});
         }
-    }
+    }   
 }
 </script>
 <style scoped>

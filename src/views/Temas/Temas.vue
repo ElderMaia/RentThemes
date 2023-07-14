@@ -105,6 +105,7 @@ export default {
                 .delete(`/themes/${id}/`)
                 .then(() => {
                     console.log('Item excluido');
+                    this.getTemas();
                     this.dialog = false;
                 })
                 .catch((error) => {

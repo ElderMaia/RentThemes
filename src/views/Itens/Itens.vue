@@ -109,6 +109,7 @@ export default {
                 .delete(`/itens/${id}/`)
                 .then(() => {
                     console.log('Item excluido');
+                    this.getItens();
                     this.dialog = false;
                 })
                 .catch((error) => {
