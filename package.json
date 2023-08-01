@@ -12,7 +12,9 @@
     "@mdi/js": "^7.2.96",
     "axios": "^1.4.0",
     "vue": "^3.2.26",
+    "vue-datepicker": "^1.3.0",
     "vue-router": "^4.2.2",
+    "vue-timepicker": "^0.0.3",
     "vue3-toastify": "^0.1.11",
     "vuetify": "3.3.6"
   },

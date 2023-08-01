@@ -7,6 +7,8 @@ import Temas from '../views/Temas/Temas.vue'
 import FormTemas from '../views/Temas/FormTemas.vue'
 import Clientes from '../views/Clientes/Clientes.vue'
 import FormClientes from '../views/Clientes/FormClientes.vue'
+import Alugueis from '../views/Alugueis/Alugueis.vue'
+import FormAlugueis from '../views/Alugueis/FormAlugueis.vue'
 
 
 const router = createRouter({
@@ -64,6 +66,22 @@ const router = createRouter({
       path: '/edit-clientes/:id',
       name: 'edit-clientes',
       component: FormClientes
+    },
+    // Caminhos para Alugueis
+    {
+      path: '/alugueis',
+      name: 'alugueis',
+      component: Alugueis
+    },
+    {
+      path: '/form-alugueis',
+      name: 'form-alugueis',
+      component: FormAlugueis
+    },
+    {
+      path: '/edit-alugueis/:id',
+      name: 'edit-alugueis',
+      component: FormAlugueis
     }
   ]
 })
